@@ -101,6 +101,8 @@ class Subscript {
          */
         let span = document.createElement(this.tag);
 
+        span.classList.add(Subscript.CSS);
+
         /**
          * SurroundContent throws an error if the Range splits a non-Text node with only one of its boundary points
          * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Range/surroundContents}
