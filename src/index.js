@@ -34,7 +34,7 @@ class Subscript {
          *
          * @type {string}
          */
-        this.tag = 'SPAN';
+        this.tag = 'SUB';
 
         /**
          * CSS classes
@@ -99,9 +99,9 @@ class Subscript {
         /**
          * Create a wrapper for highlighting
          */
-        let span = document.createElement(this.tag);
+        let subElement = document.createElement(this.tag);
 
-        span.classList.add(Subscript.CSS);
+        subElement.classList.add(Subscript.CSS);
 
         /**
          * SurroundContent throws an error if the Range splits a non-Text node with only one of its boundary points
@@ -109,13 +109,13 @@ class Subscript {
          *
          * // range.surroundContents(sub);
          */
-        span.appendChild(range.extractContents());
-        range.insertNode(span);
+        subElement.appendChild(range.extractContents());
+        range.insertNode(subElement);
 
         /**
          * Expand (add) selection to highlighted block
          */
-        this.api.selection.expandToTag(span);
+        this.api.selection.expandToTag(subElement);
     }
 
     /**
@@ -170,11 +170,11 @@ class Subscript {
 
     /**
      * Sanitizer rule
-     * @return {{span: {class: string}}}
+     * @return {{sub: {class: string}}}
      */
     static get sanitize() {
         return {
-            span: {
+            sub: {
                 class: Subscript.CSS
             }
         };
